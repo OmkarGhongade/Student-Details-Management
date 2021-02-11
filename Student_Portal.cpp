@@ -22,7 +22,7 @@ struct details{
 
 //Array of structure named student with maximum limit of 20.
 
-struct details student[20];
+struct details *student;
 
 //an integer named size of maintaining the number of students being admited in the class.
 
@@ -65,6 +65,7 @@ void captcha()
 {
     system("cls");
     int num,num1;
+    //Taken from Google.com
     srand(time(0));
     num = rand();
     printf("%d\n",num);
@@ -129,6 +130,7 @@ void login()
     scanf("%s",username);
     printf("\n\t\tEnter The Password : ");
     scanf("%s",password);
+    //Taken from Google.com
     srand(time(0));
     num = rand();
     printf("\n\n\t\tCaptcha : %d",num);
@@ -145,7 +147,7 @@ void login()
             flag=1;
         }
     }
-    if(flag==1 || size==0)
+    if(flag==1)
     {
         printf("\n\t\tPlease Create An Account First.");
         printf("\n\t\tPress 1 to go Back To Menu : ");
@@ -166,8 +168,37 @@ void newacc()
         system("cls");
         choicee();
     }
+    else if(size==0)
+    {
+        student=(struct details *)malloc(sizeof(struct details));
+        printf("\n--------------------------------NEW LOGIN-------------------------------\n");
+        printf("\n\n\t\tEnter The Name : ");
+        scanf("%s",student[size].name);
+        printf("\n\t\tEnter The User-Name : ");
+        scanf("%s",student[size].uname);
+        printf("\n\t\tEnter The Password : ");
+        scanf("%s",student[size].pass);
+        printf("\n\t\tEnter The Age : ");
+        scanf("%d",&student[size].age);
+        printf("\n\t\tEnter The Phone Number : ");
+        scanf("%lld",&student[size].pnumber);
+        printf("\n\t\tEnter The Branch : ");
+        scanf("%s",student[size].branch);
+        printf("\n\t\tEnter The Division : ");
+        scanf("%s",student[size].div);
+        printf("\n\t\tEnter The Date Of Birth : ");
+        scanf("%s",student[size].dob);
+        printf("\n\t\tEnter The Semester In Which You Are Studying : ");
+        scanf("%d",&student[size].sem);
+        size++;
+        printf("\n\n\t\tStudent Is Registered Sucessfuly.....");
+        printf("\n\t\tPress 1 to go Back To Menu : ");
+        scanf("%d",&num);
+        choicee();
+    }
     else
     {
+        student=(struct details *)realloc(student,size+1);
         printf("\n--------------------------------NEW LOGIN-------------------------------\n");
         printf("\n\n\t\tEnter The Name : ");
         scanf("%s",student[size].name);
