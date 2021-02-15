@@ -162,13 +162,7 @@ void newacc()
 {
     int num;
     system("cls");
-    if(size==20)
-    {
-        printf("\n\t\tClass is Full.\n\t\tYou Cannot Admit More Students To the Class.\n\t\tPlease Try With Other Features");
-        system("cls");
-        choicee();
-    }
-    else if(size==0)
+    if(size==0)
     {
         student=(struct details *)malloc(sizeof(struct details));
         printf("\n--------------------------------NEW LOGIN-------------------------------\n");
